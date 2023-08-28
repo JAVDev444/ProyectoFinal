@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+    <title>Registro New DRIVER</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h2>[[#{driver.formulario}]]</h2>
+<a th:href="@{/}">[[#{accion.regresar}]]</a>
+<br/>
+<form th:action="@{/guardar}" method="post" th:object="${driver}">
+    <input type="hidden" name="idDrivers" th:field="*{idDrivers}"/>
+    <br/>
+    <label for="code">[[#{driver.code}]]:</label>
+    <input type="text" id="code" name="code" th:field="*{code}"/>
+    <span th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Error code</span>
+    <br/>
+    <label for="name">[[#{driver.name}]]:</label>
+    <input type="text" id="name" name="name" th:field="*{name}"/>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error name</span>
+    <br/>
+    <label for="cellphone">[[#{driver.cellphone}]]:</label>
+    <input type="tel" id="cellphone" name="cellphone" th:field="*{cellphone}"/>
+    <br/>
+    <label for="email">[[#{driver.email}]]:</label>
+    <input type="text" id="email" name="email" th:field="*{email}"/>
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error email</span>
+    <br/>
+    <label for="enabled">[[#{driver.enabled}]]:</label>
+    <input type="text" id="enabled" name="enabled" th:field="*{enabled}"/>
+    <span th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}">Error eenabled</span>
+    <br/>
+    <input type="submit" name="guardar" th:value="#{accion.guardar}"/>
+</form>
+<footer th:replace="layout/plantilla :: footer"/>
+</body>
+</html>

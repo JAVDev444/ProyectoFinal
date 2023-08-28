@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+    <title>Registro New Trucks</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h2>[[#{truck.formulario}]]</h2>
+<a th:href="@{/trucks}">[[#{accion.regresar}]]</a>
+<br/>
+<form th:action="@{/guardar2}" method="post" th:object="${trucks}">
+    <input type="hidden" name="idTrucks" th:field="*{idTrucks}"/>
+    <br/>
+    <label for="code">[[#{truck.code}]]:</label>
+    <input type="text" id="code" name="code" th:field="*{code}"/>
+    <span th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Error code</span>
+    <br/>
+    <label for="enabled">[[#{truck.enabled}]]:</label>
+    <input type="text" id="enabled" name="enabled" th:field="*{enabled}"/>
+    <span th:if="${#fields.hasErrors('enabled')}" th:errors="*{enabled}">Error enabled</span>
+    <br/>
+    <input type="submit" name="guardar2" th:value="#{accion.guardar}"/>
+</form>
+<footer th:replace="layout/plantilla :: footer"/>
+</body>
+</html>

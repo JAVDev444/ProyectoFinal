@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Truck</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<header th:replace="layout/plantilla :: header"/>
+    <h1>Lista de Trucks</h1>
+    <a th:href="@{/agregar2}">[[#{truck.crear}]]</a>
+    <div th:if="${trucks != null and !trucks.empty}">
+        <table class="table table-bordered border-primary">
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Enabled</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            <tr th:each="truck : ${trucks}">
+                <td th:text="${truck.idTrucks}">idTrucks</td>
+                <td th:text="${truck.code}">Code</td>
+                <td th:text="${truck.enabled}">Enabled</td>
+                <td><a th:href="@{/editar2/} + ${truck.idTrucks}"/>[[#{accion.editar}]]</td>
+                <td><a th:href="@{/eliminar2(idTrucks=${truck.idTrucks})}"/>[[#{accion.eliminar}]]</td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${trucks == null or trucks.empty}">
+        [[#{truck.lista-vacia}]]
+    </div>
+    <footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+
+</html>

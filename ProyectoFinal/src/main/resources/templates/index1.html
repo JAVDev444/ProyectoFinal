@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Final</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<header th:replace="layout/plantilla :: header"/>
+<div class="container text-center">
+    <div>
+        <h1>Bienvenido a la Aplicacion del Proyecto Final</h1>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{/drivers}">CRUD Drivers</a>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{/trucks}">CRUD Trucks</a>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{/packages}">Registrar paquetes con sus productos</a>
+    </div>
+    <div class="p-2">
+        <a class="h2" th:href="@{/packprod}">Eliminar productos</a>
+    </div>
+</div>
+</body>
+</html>

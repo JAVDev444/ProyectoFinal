@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+    <title>Registro New Trucks</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h2>[[#{package.formulario}]]</h2>
+<a th:href="@{/packages}">[[#{accion.regresar}]]</a>
+<br/>
+<form th:action="@{/guardar3}" method="post" th:object="${packages}">
+    <input type="hidden" name="idPackages" th:field="*{idPackages}"/>
+    <br/>
+    <label for="code">[[#{packages.code}]]:</label>
+    <input type="text" id="code" name="code" th:field="*{code}"/>
+    <span th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Error code</span>
+    <br/>
+    <label for="weight">[[#{packages.weight}]]:</label>
+    <input type="text" id="weight" name="weight" th:field="*{weight}"/>
+    <span th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">Error weight</span>
+    <br/>
+    <label for="schedule">[[#{packages.schedule}]]:</label>
+    <input type="text" id="schedule" name="schedule" th:field="*{schedule}"/>
+    <span th:if="${#fields.hasErrors('schedule')}" th:errors="*{schedule}">Error schedule</span>
+    <br/>
+    <label for="statusType">[[#{packages.statusType}]]:</label>
+    <input type="text" id="statusType" name="statusType" th:field="*{statusType}"/>
+    <span th:if="${#fields.hasErrors('statusType')}" th:errors="*{statusType}">Error statusType</span>
+    <br/>
+    <input type="submit" name="guardar3" th:value="#{accion.guardar}"/>
+</form>
+<footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+</html>

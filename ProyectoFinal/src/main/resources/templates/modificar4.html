@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+    <title>Registro New Paquetes</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h2>[[#{packpro.formulario}]]</h2>
+<a th:href="@{/packprod}">[[#{accion.regresar}]]</a>
+<br/>
+<form th:action="@{/guardar4}" method="post" th:object="${package_Products}">
+    <input type="hidden" name="idProducts" th:field="*{idProducts}"/>
+    <br/>
+    <label for="code">[[#{packpro.code}]]:</label>
+    <input type="text" id="code" name="code" th:field="*{code}"/>
+    <span th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Error code</span>
+    <br/>
+    <label for="weight">[[#{packpro.weight}]]:</label>
+    <input type="text" id="weight" name="weight" th:field="*{weight}"/>
+    <span th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}">Error weight</span>
+    <br/>
+    <label for="sku">[[#{packpro.sku}]]:</label>
+    <input type="text" id="sku" name="sku" th:field="*{sku}"/>
+    <span th:if="${#fields.hasErrors('sku')}" th:errors="*{sku}">Error sku</span>
+    <br/>
+    <label for="quantity">[[#{packpro.quantity}]]:</label>
+    <input type="text" id="quantity" name="quantity" th:field="*{quantity}"/>
+    <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Error quantity</span>
+    <br/>
+    <input type="submit" name="guardar4" th:value="#{accion.guardar}"/>
+</form>
+<footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+</html>
