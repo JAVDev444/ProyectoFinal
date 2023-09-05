@@ -2,12 +2,13 @@ package cl.com.javdev.service;
 
 import cl.com.javdev.dao.DriverDao;
 import cl.com.javdev.domain.Driver;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@AllArgsConstructor
 @Service
 public class DriverServiceImpl implements DriverService {
 

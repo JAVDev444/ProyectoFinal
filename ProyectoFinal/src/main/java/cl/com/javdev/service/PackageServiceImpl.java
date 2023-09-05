@@ -2,11 +2,12 @@ package cl.com.javdev.service;
 
 import cl.com.javdev.dao.PackageDao;
 import cl.com.javdev.domain.Packages;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
-
+@AllArgsConstructor
 @Service
 public class PackageServiceImpl implements PackageService{
     @Autowired

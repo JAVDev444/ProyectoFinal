@@ -2,11 +2,13 @@ package cl.com.javdev.service;
 
 import cl.com.javdev.dao.TruckDao;
 import cl.com.javdev.domain.Trucks;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+@AllArgsConstructor
 @Service
 public class TruckServiceImpl implements TruckService{
     @Autowired
