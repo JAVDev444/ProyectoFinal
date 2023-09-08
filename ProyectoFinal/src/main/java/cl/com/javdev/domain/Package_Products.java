@@ -22,13 +22,13 @@ public class Package_Products implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducts;
-    @NotEmpty
+    @NotEmpty(message = "El codigo no puede estar vacio")
     private String code;
     @NotNull
     private double weight;
-    @NotEmpty
+    @NotEmpty(message = "El sku no puede estar vacio")
     private String sku;
-    @NotNull
+    @NotNull(message = "La cantidad no puede estar vacio")
     private Integer quantity;
     private boolean isDelete = false;
     private LocalDateTime delete_at;

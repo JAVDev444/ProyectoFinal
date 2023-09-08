@@ -23,13 +23,13 @@ public class Driver implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDrivers;
-    @NotEmpty
+    @NotEmpty(message = "El codigo no puede estar vacio")
     private String code;
-    @NotEmpty
+    @NotEmpty(message = "El nombre no puede estar vacio")
     private String name;
-    @NotNull (message = "campo no nulo")
+    @NotNull (message = "telefono no puede estar vacio")
     private String cellphone;
-    @Email
+    @Email(message = "El Email no puede estar vacio")
     private String email;
     private boolean enabled;
     @Column(name = "is_delete")

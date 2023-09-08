@@ -1,18 +1,15 @@
 package cl.com.javdev.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name="trucks")
 @SQLDelete(sql = "UPDATE trucks SET is_delete=true, delete_at=now() WHERE id_trucks=?")
@@ -22,7 +19,7 @@ public class Trucks implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTrucks;
-    @NotEmpty
+    @NotEmpty(message = "El codigo no puede estar vacio")
     private String code;
     private boolean enabled;
     private boolean isDelete = false;

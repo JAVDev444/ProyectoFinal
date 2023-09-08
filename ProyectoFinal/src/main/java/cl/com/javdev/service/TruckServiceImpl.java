@@ -23,19 +23,19 @@ public class TruckServiceImpl implements TruckService{
 
     @Override
     @Transactional
-    public void guardarTruck(Trucks truck) {
-    truckDao.save(truck);
+    public void guardarTruck(Trucks trucks) {
+    truckDao.save(trucks);
     }
 
     @Override
     @Transactional
-    public void eliminar(Trucks truck) {
-    truckDao.delete(truck);
+    public void eliminar(Trucks trucks) {
+    truckDao.delete(trucks);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Trucks encontrarTruck(Trucks truck) {
-    return truckDao.findById(truck.getIdTrucks()).orElse(null);
+    public Trucks encontrarTruck(Trucks trucks) {
+    return truckDao.findById(trucks.getIdTrucks()).orElse(null);
     }
 }

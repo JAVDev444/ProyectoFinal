@@ -1,5 +1,6 @@
 package cl.com.javdev.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
@@ -14,8 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name="packages")
 @SQLDelete(sql = "UPDATE packages SET is_delete=true, delete_at=now() WHERE id_packages=?")
@@ -25,7 +25,7 @@ public class Packages implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPackages;
-    @NotEmpty
+    @NotEmpty(message = "El codigo no puede estar vacio")
     private String code;
     @NotNull
     private double weight;

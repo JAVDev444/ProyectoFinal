@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface TruckService {
     public List<Trucks> listarTrucks();
-    public void guardarTruck(Trucks truck);
-    public void eliminar(Trucks truck);
-    public Trucks encontrarTruck(Trucks truck);
+    public void guardarTruck(Trucks trucks);
+    public void eliminar(Trucks trucks);
+    public Trucks encontrarTruck(Trucks trucks);
 }
 

@@ -30,11 +30,11 @@ public class ControladorTruck {
     }
 
     @PostMapping("/guardar2")
-    public String guardarTruck(@Valid Trucks truck, Errors errores){
+    public String guardarTruck(@Valid Trucks trucks, Errors errores){
         if(errores.hasErrors()){
             return "index2";
         }
-        truckService.guardarTruck(truck);
+        truckService.guardarTruck(trucks);
         return "redirect:/";
     }
     @GetMapping("/editar2/{idTrucks}")
@@ -44,8 +44,8 @@ public class ControladorTruck {
         return "modificar2";
     }
     @GetMapping("/eliminar2")
-    public String eliminar2(Trucks truck){
-        truckService.eliminar(truck);
+    public String eliminar2(Trucks trucks){
+        truckService.eliminar(trucks);
         return "redirect:/";
     }
 }
