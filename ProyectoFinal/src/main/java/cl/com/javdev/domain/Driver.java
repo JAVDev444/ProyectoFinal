@@ -27,8 +27,9 @@ public class Driver implements Serializable {
     private String code;
     @NotEmpty(message = "El nombre no puede estar vacio")
     private String name;
-    @NotNull (message = "telefono no puede estar vacio")
+    @NotNull(message = "telefono no puede estar vacio")
     private String cellphone;
+    @NotEmpty(message = "El Email no puede estar vacio")
     @Email(message = "El Email no puede estar vacio")
     private String email;
     private boolean enabled;

@@ -25,7 +25,7 @@
       <td th:text="${package.code}">Code</td>
       <td th:text="${package.weight}">Weight</td>
       <td th:text="${package.schedule}">Schedule</td>
-      <td th:text="${package.statusType}">StatusType</td>
+      <td th:text="${package.statusType}">Schedule</td>
       <td><a th:href="@{/editar3/} + ${package.idPackages}">[[#{accion.editar}]]</td>
       <td><a th:href="@{/eliminarp(idPackages=${package.idPackages})}" >[[#{accion.eliminar}]]</td>
     </tr>

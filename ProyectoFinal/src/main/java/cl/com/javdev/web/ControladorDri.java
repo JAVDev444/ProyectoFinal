@@ -15,7 +15,6 @@ import javax.validation.Valid;
 
 @Controller
 @Slf4j
-@RequestMapping("/api/v1/drivers")
 public class ControladorDri {
     @Autowired
     private DriverService driverService;

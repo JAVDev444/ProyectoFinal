@@ -25,8 +25,9 @@
     <span th:if="${#fields.hasErrors('schedule')}" th:errors="*{schedule}">Error schedule</span>
     <br/>
     <label for="statusType">[[#{packages.statusType}]]:</label>
-    <input type="text" id="statusType" name="statusType" th:field="*{statusType}"/>
-    <span th:if="${#fields.hasErrors('statusType')}" th:errors="*{statusType}">Error statusType</span>
+    <input type="text" name="statusType" th:field="*{statusType}"/>
+    <span th:if="${#fields.hasErrors('statusType')}" id="statusType" th:errors="*{statusType}">Error schedule</span>
+
     <br/>
     <input type="submit" name="guardar3" th:value="#{accion.guardar}"/>
 </form>
