@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" lang="es"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Listado de Packages</title>
@@ -8,7 +10,7 @@
 <body>
 <header th:replace="layout/plantilla :: header"></header>
 <h1>Lista de Packages</h1>
-<a th:href="@{/agregar3}">[[#{package.crear}]]</a>
+<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar3}">[[#{package.crear}]]</a>
 <div th:if="${packages != null and !packages.empty}">
   <table class="table table-bordered border-primary" >
     <tr>
@@ -17,8 +19,8 @@
       <th>Weight</th>
       <th>Schedule</th>
       <th>Status</th>
-      <th>Editar</th>
-      <th>Eliminar</th>
+      <th sec:authorize="hasRole('ROLE_ADMIN')" >Editar</th>
+      <th sec:authorize="hasRole('ROLE_ADMIN')" >Eliminar</th>
     </tr>
     <tr th:each="package : ${packages}">
       <td th:text="${package.idPackages}">idPackages</td>
@@ -26,8 +28,8 @@
       <td th:text="${package.weight}">Weight</td>
       <td th:text="${package.schedule}">Schedule</td>
       <td th:text="${package.statusType}">Schedule</td>
-      <td><a th:href="@{/editar3/} + ${package.idPackages}">[[#{accion.editar}]]</td>
-      <td><a th:href="@{/eliminarp(idPackages=${package.idPackages})}" >[[#{accion.eliminar}]]</td>
+      <td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/editar3/} + ${package.idPackages}"/>[[#{accion.editar}]]</td>
+      <td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarp(idPackages=${package.idPackages})}" />[[#{accion.eliminar}]]</td>
     </tr>
   </table>
 </div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml" lang="es">
+      xmlns="http://www.w3.org/1999/xhtml" lang="es"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Listado de Truck</title>
@@ -10,22 +11,22 @@
 <body>
 <header th:replace="layout/plantilla :: header"/>
 <h1>Lista de Trucks</h1>
-<a th:href="@{/agregar2}">[[#{truck.crear}]]</a>
+<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar2}">[[#{truck.crear}]]</a>
 <div th:if="${trucks != null and !trucks.empty}">
     <table class="table table-bordered border-primary">
         <tr>
             <th>Id</th>
             <th>Code</th>
             <th>Enabled</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')" >Editar</th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')" >Eliminar</th>
         </tr>
         <tr th:each="truck : ${trucks}">
             <td th:text="${truck.idTrucks}">idTrucks</td>
             <td th:text="${truck.code}">Code</td>
             <td th:text="${truck.enabled}">Enabled</td>
-            <td><a th:href="@{/editar2/} + ${truck.idTrucks}"/>[[#{accion.editar}]]</td>
-            <td><a th:href="@{/eliminar2(idTrucks=${truck.idTrucks})}"/>[[#{accion.eliminar}]]</td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')"  ><a th:href="@{/editar2/} + ${truck.idTrucks}"/>[[#{accion.editar}]]</td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminar2(idTrucks=${truck.idTrucks})}"/>[[#{accion.eliminar}]]</td>
         </tr>
     </table>
 </div>

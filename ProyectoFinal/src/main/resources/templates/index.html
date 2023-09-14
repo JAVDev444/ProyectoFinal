@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml" lang="es"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Listado de Drivers</title>
@@ -8,7 +10,7 @@
 <body>
 <header th:replace="layout/plantilla :: header"/>
 <h1 th:text="#{plantilla.titulo}">Titulo</h1>
-<a th:href="@{/agregar}">[[#{driver.crear}]]</a>
+<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{driver.crear}]]</a>
 <div th:if="${drivers != null and !drivers.empty}">
   <table class="table table-bordered border-primary" >
     <tr>
@@ -18,8 +20,8 @@
       <th>Cellphone</th>
       <th>Email</th>
       <th>Enabled</th>
-      <th>Editar</th>
-      <th>Eliminar</th>
+      <th sec:authorize="hasRole('ROLE_ADMIN')" >Editar</th>
+      <th sec:authorize="hasRole('ROLE_ADMIN')" >Eliminar</th>
     </tr>
     <tr th:each="driver : ${drivers}">
       <td th:text="${driver.idDrivers}">idDrivers</td>
@@ -28,8 +30,8 @@
       <td th:text="${driver.cellphone}">Cellphone</td>
       <td th:text="${driver.email}">Email</td>
       <td th:text="${driver.enabled}">Enabled</td>
-      <td><a th:href="@{/editar/} + ${driver.idDrivers}"/>[[#{accion.editar}]]</td>
-      <td><a th:href="@{/eliminar(idDrivers=${driver.idDrivers})}" />[[#{accion.eliminar}]]</td>
+      <td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/editar/} + ${driver.idDrivers}"/>[[#{accion.editar}]]</td>
+      <td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminar(idDrivers=${driver.idDrivers})}" />[[#{accion.eliminar}]]</td>
     </tr>
   </table>
 </div>
